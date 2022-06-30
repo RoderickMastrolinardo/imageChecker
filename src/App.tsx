@@ -27,6 +27,14 @@ const App = () => {
     }
     setLoading(false);
   };
+  const resetImages = () => {
+    setLeftImage(null);
+    setRightImage(null);
+    setLeftFace({ faceId: "" });
+    setRightFace({ faceId: "" });
+    setIdentical("NO");
+    setResult("");
+  };
   return (
     <div className="App">
       <header className="App-header">
@@ -85,18 +93,29 @@ const App = () => {
           selectedImage={rightImage}
         />
       </div>
-      {leftFace.faceId !== "" && rightFace.faceId !== "" ? (
-        <button disabled={loading} onClick={compareImages} className="button">
-          {!loading ? "Comparar" : "Cargando"}
-        </button>
-      ) : null}
-
       {result && !loading ? (
-        <div>
-          <h2>Resultados: {result}</h2>
-          <h1>Son iguales? {identical}</h1>{" "}
-        </div>
-      ) : null}
+        <>
+          <div>
+            <h2>Resultados: {result}</h2>
+            <h1>Son iguales? {identical}</h1>
+          </div>
+          <button disabled={loading} onClick={resetImages} className="button">
+            Comenzar de nuevo
+          </button>
+        </>
+      ) : (
+        <>
+          {leftFace.faceId !== "" && rightFace.faceId !== "" ? (
+            <button
+              disabled={loading}
+              onClick={compareImages}
+              className="button"
+            >
+              {!loading ? "Comparar" : "Cargando"}
+            </button>
+          ) : null}
+        </>
+      )}
     </div>
   );
 };
