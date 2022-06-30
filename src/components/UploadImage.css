@@ -1,0 +1,16 @@
+img {
+  width: 100%;
+  height: 300px;
+  object-fit: scale-down;
+  object-position: bottom;
+}
+.UploadContainer {
+  padding: 25px;
+}
+.dropzone-div {
+  text-align: center;
+  padding: 20px;
+  border: 3px dashed;
+  width: 60%;
+  margin: auto;
+}
