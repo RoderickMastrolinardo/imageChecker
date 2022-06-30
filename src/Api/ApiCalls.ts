@@ -18,7 +18,10 @@ export const uploadImage = (result: any) => {
         return res.data[0];
       }
     })
-    .catch((err) => alert("ha ocurrido un error subiendo la imagen"));
+    .catch((err) => {
+      console.log(err);
+      alert("ha ocurrido un error subiendo la imagen");
+    });
 };
 
 export const compareFaces = (

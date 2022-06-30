@@ -4,10 +4,12 @@ import "./App.css";
 import UploadImage from "./components/UploadImage.component";
 
 const App = () => {
-  const [leftIamge, setLeftImage] = useState<string | ArrayBuffer | null>(null);
-  const [rightImage, setRightImage] = useState<string | ArrayBuffer | null>(
-    null
-  );
+  const [leftIamge, setLeftImage] = useState<
+    string | ArrayBuffer | null | "error"
+  >(null);
+  const [rightImage, setRightImage] = useState<
+    string | ArrayBuffer | null | "error"
+  >(null);
   const [leftFace, setLeftFace] = useState<{ faceId: string }>({ faceId: "" });
   const [rightFace, setRightFace] = useState<{ faceId: string }>({
     faceId: "",
@@ -47,7 +49,7 @@ const App = () => {
               setResult("");
               setIdentical("NO");
               setLeftFace({ faceId: "" });
-              return setLeftImage(null);
+              return setLeftImage("error");
             }
             setLeftFace(image);
             const reader = new FileReader();
@@ -71,7 +73,7 @@ const App = () => {
               setResult("");
               setIdentical("NO");
               setRightFace({ faceId: "" });
-              return setRightImage(null);
+              return setRightImage("error");
             }
             setRightFace(image);
             const reader = new FileReader();
